@@ -55,7 +55,7 @@ const Checkout = class extends React.Component {
       description: 'A product well worth your time',
       token: token => {
         fetch(
-          `https://distracted-ritchie-5c9292.netlify.com/.netlify/functions/purchase`,
+          `https://4m5jfeec48.execute-api.us-east-1.amazonaws.com/dev/checkout`,
           {
             method: 'POST',
             body: JSON.stringify({
