@@ -55,7 +55,7 @@ const Checkout = class extends React.Component {
       description: 'A product well worth your time',
       token: token => {
         fetch(
-          "https://distracted-ritchie-5c9292.netlify.com/.netlify/functions/purchase",
+          "https://distracted-ritchie-5c9292.netlify.com/.netlify/functions/opurchase",
           {
             method: 'POST',
             body: JSON.stringify({
@@ -69,13 +69,13 @@ const Checkout = class extends React.Component {
           }
         )
           .then(res => {
-            console.log('Transaction processed successfully',res.statusText,res.json())
+            console.log('Transaction processed successfully',res.json())
             this.resetButton()
             this.setState({ paymentMessage: 'Payment Successful!' })
             return res.json()
           })
           .catch(error => {
-            console.error('Error:', error,"  after error",res)
+            console.error('Error:', error,"  after error")
             this.setState({ paymentMessage: 'Payment Failed' })
           })
       },
