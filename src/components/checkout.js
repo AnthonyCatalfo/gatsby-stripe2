@@ -39,7 +39,7 @@ const Checkout = class extends React.Component {
 
   componentDidMount() {
     this.stripeHandler = StripeCheckout.configure({
-      key: 'pk_test_hUOnxDfUSzB8m7FR2vVT6FuU',
+      key: 'pk_test_kuhbxb0MMZsp6fj6aTNDnxUu',
       closed: () => {
         this.resetButton()
       },
@@ -69,13 +69,13 @@ const Checkout = class extends React.Component {
           }
         )
           .then(res => {
-            console.log('Transaction processed successfully',res.status)
+            console.log('Transaction processed successfully',res)
             this.resetButton()
             this.setState({ paymentMessage: 'Payment Successful!' })
             return res.json()
           })
           .catch(error => {
-            console.error('Error:', error)
+            console.error('Error:', error,"  after error",res)
             this.setState({ paymentMessage: 'Payment Failed' })
           })
       },
