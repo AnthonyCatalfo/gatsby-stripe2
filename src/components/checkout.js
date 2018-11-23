@@ -39,7 +39,7 @@ const Checkout = class extends React.Component {
 
   componentDidMount() {
     this.stripeHandler = StripeCheckout.configure({
-      key: 'pk_test_hUOnxDfUSzB8m7FR2vVT6FuU',
+      key: 'pk_test_kuhbxb0MMZsp6fj6aTNDnxUu',
       closed: () => {
         this.resetButton()
       },
@@ -55,7 +55,7 @@ const Checkout = class extends React.Component {
       description: 'A product well worth your time',
       token: token => {
         fetch(
-          "https://distracted-ritchie-5c9292.netlify.com/.netlify/functions/p2",
+          `https://4m5jfeec48.execute-api.us-east-1.amazonaws.com/dev/checkout`,
           {
             method: 'POST',
             body: JSON.stringify({
@@ -69,13 +69,13 @@ const Checkout = class extends React.Component {
           }
         )
           .then(res => {
-            console.log('Transaction processed successfully',res.status,res.json())
+            console.log('Transaction processed successfully')
             this.resetButton()
             this.setState({ paymentMessage: 'Payment Successful!' })
             return res.json()
           })
           .catch(error => {
-            console.error('Error:', error,"  after error")
+            console.error('Error:', error)
             this.setState({ paymentMessage: 'Payment Failed' })
           })
       },
